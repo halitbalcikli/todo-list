@@ -1,0 +1,17 @@
+GET http://localhost:3001/todos HTTP/1.1
+
+###
+
+POST http://localhost:3001/todo/new
+Content-Type: application/json
+
+{
+    "text": "yemek yenecek"
+}
+
+###
+
+DELETE http://localhost:3001/todo/delete/630b73f401b51153caef2637
+
+###
+GET http://localhost:3001/todo/complete/630b579883d4eebe42c665e4
