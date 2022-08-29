@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodoList } from './redux/todoSlice';
 
 const BASE_URL = "http://localhost:3001";
 
@@ -8,13 +10,12 @@ const App = () => {
   const [popupActive, setPopupActive] = useState(false);
   const [newTodo, setNewTodo] = useState("");
   const [missingChar, setMissingChar] = useState("")
-
+  const dispatch = useDispatch();
 
 
   useEffect(() => {
     fetchTodos();
   }, [])
-
 
   const fetchTodos = async () => {
     const { data } = await axios.get(BASE_URL + "/todos");
@@ -51,6 +52,7 @@ const App = () => {
       });
 
       setTodos([...todos, data]);
+
 
       setPopupActive(false);
       setNewTodo("");
